@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
+using System.Web;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace StudyService.Controllers
 {
@@ -20,22 +23,35 @@ namespace StudyService.Controllers
 
           SqlConnection opencon =  connectDB();
 
-            getStudydata(opencon);
+           string res= getStudydata(opencon);
                                  
-            return "gaurav kumar";
+            return res;
 
         }
 
-        private void getStudydata(SqlConnection opencon)
+        private string getStudydata(SqlConnection opencon)
         {
            
             SqlCommand cmd = new SqlCommand("select * from Study", opencon);
 
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
-
+            DataTable dt = new DataTable();
             DataSet ds = new DataSet();
-            da.Fill(ds);
+            da.Fill(dt);
+                        
+            List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+            Dictionary<string, object> row;
+            foreach (DataRow dr in dt.Rows)
+            {
+                row = new Dictionary<string, object>();
+                foreach (DataColumn col in dt.Columns)
+                {
+                    row.Add(col.ColumnName, dr[col]);
+                }
+                rows.Add(row);
+            }
+            return JsonConvert.SerializeObject(rows);
 
 
 
