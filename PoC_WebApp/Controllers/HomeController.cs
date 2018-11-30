@@ -20,8 +20,8 @@ namespace PoC_WebApp.Controllers
 
         private string getApiResponse()
         {
-         //  string URL = "http://172.26.60.92/api/values";
-           string URL = "http://localhost:54271/api/values";
+           string URL = "http://172.26.60.92/api/values";
+          // string URL = "http://localhost:54271/api/values";
             string result = "";
           //  var convRes="";
             using (var httpClient = new HttpClient())
