@@ -32,7 +32,7 @@ namespace StudyService.Controllers
         private string getStudydata(SqlConnection opencon)
         {
            
-            SqlCommand cmd = new SqlCommand("select * from Study", opencon);
+            SqlCommand cmd = new SqlCommand("select * from Project", opencon);
 
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;
@@ -74,8 +74,8 @@ namespace StudyService.Controllers
 
         private SqlConnection connectDB()
         {
-            string conString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog = DBSource; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+            //  string conString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog = DBSource; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            string conString = @"Server=tcp:azureprojectdbserver.database.windows.net,1433;Initial Catalog=azureprojectdb;Persist Security Info=False;User ID=azureadmin;Password=WindowsAdmin1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = conString;
 
