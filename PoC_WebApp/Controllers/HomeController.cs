@@ -31,6 +31,8 @@ namespace PoC_WebApp.Controllers
                 //convRes = formattedRes.ToString();
                 return result;
             }
+
+            //For Docker Demo
         }
         public IActionResult About()
         {
@@ -49,7 +51,6 @@ namespace PoC_WebApp.Controllers
             //ViewBag.Study3 = study3;
             ViewBag.APIRes = newRes;
 
-            // Demo to Pft team
             return View();
         }
 
