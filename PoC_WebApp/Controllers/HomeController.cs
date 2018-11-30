@@ -20,8 +20,8 @@ namespace PoC_WebApp.Controllers
 
         private string getApiResponse()
         {
-           //  string URL = "https://localhost:44376/api/values";
-           string URL = "http://172.26.56.15/api/values";
+         //  string URL = "http://172.26.60.92/api/values";
+           string URL = "http://localhost:54271/api/values";
             string result = "";
           //  var convRes="";
             using (var httpClient = new HttpClient())
@@ -38,20 +38,16 @@ namespace PoC_WebApp.Controllers
 
             string newRes = getApiResponse();
             
-            JObject formattedRes = JObject.Parse(newRes);
+            //JObject formattedRes = JObject.Parse(newRes);
            
-            string study1 = formattedRes["Study1001"].ToString();
-            string study2 = formattedRes["Study1002"].ToString();
-            string study3 = formattedRes["Study1003"].ToString();
-            string study4 = formattedRes["Study1004"].ToString();
-            string study5 = formattedRes["Study1005"].ToString();
-            string study6 = formattedRes["Study1006"].ToString();
-            ViewBag.Study1 = study1;
-            ViewBag.Study2 = study2;
-            ViewBag.Study3 = study3;
-            ViewBag.Study4 = study4;
-            ViewBag.Study5 = study5;
-            ViewBag.Study6 = study6;
+            //string study1 = formattedRes["projectid"].ToString();
+            //string study2 = formattedRes["projectname"].ToString();
+            //string study3 = formattedRes["updated_after"].ToString();
+           
+            //ViewBag.Study1 = study1;
+            //ViewBag.Study2 = study2;
+            //ViewBag.Study3 = study3;
+            ViewBag.APIRes = newRes;
 
             return View();
         }
