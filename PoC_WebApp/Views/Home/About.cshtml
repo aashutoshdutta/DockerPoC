@@ -1,13 +1,48 @@
 ﻿@{
     ViewData["Title"] = "API Info";
 }
-<h2>@ViewData["Title"]</h2>
+@*<h2>@ViewData["Title"]</h2>*@
 <h3>@ViewData["Message"]</h3>
 
 <div>
     <b> API Result for Project Service </b>@ViewBag.APIRes
     <br />
 
-    
-        
+    <table>
+        <thead>
+            <tr>
+                <th width="150">
+                    Project Id
+                </th>
+
+                <th width="150">
+                    Project Name
+                </th>
+
+                <th width="150">
+                    Updated After
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.projectid
+                    </td>
+                    <td>
+                        @item.projectname
+                    </td>
+                    <td>
+                        @item.updated_after
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
 </div>

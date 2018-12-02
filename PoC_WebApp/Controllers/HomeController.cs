@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PoC_WebApp.Models;
 
@@ -18,27 +19,41 @@ namespace PoC_WebApp.Controllers
             return View();
         }
 
-        private string getApiResponse()
-        {
-           string URL = "http://172.26.49.101/api/values";
-          // string URL = "http://localhost:54271/api/values";
-            string result = "";
-          //  var convRes="";
-            using (var httpClient = new HttpClient())
-            { 
-                HttpResponseMessage apiresponse = httpClient.GetAsync(URL).Result;
-                result = apiresponse.Content.ReadAsStringAsync().Result;
-                //convRes = formattedRes.ToString();
-                return result;
-            }
+        //private IActionResult getApiResponse()
+        //{
+        //   string URL = "http://172.26.49.101/api/values";
+        //  // string URL = "http://localhost:54271/api/values";
+        //    string result = "";
+        //  //  var convRes="";
+        //    using (var httpClient = new HttpClient())
+        //    { 
+        //        HttpResponseMessage apiresponse = httpClient.GetAsync(URL).Result;
+        //        result = apiresponse.Content.ReadAsStringAsync().Result;
+        //        var jsonObject = JsonConvert.DeserializeObject<List<Study>>(result);
+        //        //convRes = formattedRes.ToString();
+        //        return View(jsonObject);
+        //    }
 
-            //For Docker Demo
-        }
+        //    //For Docker Demo
+        //}
         public IActionResult About()
         {
             ViewData["Message"] = "Please find the API response below";
 
-            string newRes = getApiResponse();
+            //string URL = "http://172.26.49.101/api/values";
+             string URL = "http://localhost:54271/api/values";
+            string result = "";
+
+            using (var httpClient = new HttpClient())
+            {
+                HttpResponseMessage apiresponse = httpClient.GetAsync(URL).Result;
+                result = apiresponse.Content.ReadAsStringAsync().Result;
+                var jsonObject = JsonConvert.DeserializeObject<List<Study>>(result);
+                //convRes = formattedRes.ToString();
+                return View(jsonObject);
+            }
+
+          //  string newRes = getApiResponse();
             
             //JObject formattedRes = JObject.Parse(newRes);
            
@@ -49,9 +64,9 @@ namespace PoC_WebApp.Controllers
             //ViewBag.Study1 = study1;
             //ViewBag.Study2 = study2;
             //ViewBag.Study3 = study3;
-            ViewBag.APIRes = newRes;
+           // ViewBag.APIRes = newRes;
 
-            return View();
+        //    return View();
         }
 
         
