@@ -39,8 +39,8 @@ namespace PoC_WebApp.Controllers
         {
             ViewData["Message"] = "Please find the API response below";
 
-            //string URL = "http://172.26.51.204/api/values";
-           //  string URL = "http://localhost:54271/api/values";
+            string URL = "http://172.26.51.204/api/values";
+           //string URL = "http://localhost:54271/api/values";
             string result = "";
 
             using (var httpClient = new HttpClient())
