@@ -53,6 +53,7 @@ namespace PoC_WebApp.Controllers
             }
 
           //  string newRes = getApiResponse();
+          // changed
             
             //JObject formattedRes = JObject.Parse(newRes);
            
