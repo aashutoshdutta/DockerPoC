@@ -36,6 +36,10 @@ namespace StudyService
             }
 
             app.UseMvc();
+             app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync(".Net Core WebAPI Deployed as Azure App Service");
+            });
         }
     }
 }
