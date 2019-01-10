@@ -23,11 +23,11 @@ namespace StudyService.Controllers
         {
             //return new string[] { "value1", "value2" };
 
-             SqlConnection opencon =  connectDB();
+            // SqlConnection opencon =  connectDB();
 
-           // OracleConnection opencon = connectDBOnprem();
+            OracleConnection opencon = connectDBOnprem();
 
-            string res = getStudydata(opencon);
+            string res = getFDRdata(opencon);
 
             return res;
 
@@ -80,7 +80,7 @@ namespace StudyService.Controllers
         private string getFDRdata(OracleConnection opencon)
         {
 
-            OracleCommand cmd = new OracleCommand("select GL_ACCOUNT,COSTCENTER from GL_LINE_ITEM_CERPS_L where COMP_CODE = 'GB09' and COSTCENTER is not null;", opencon);
+            OracleCommand cmd = new OracleCommand("select GL_ACCOUNT,COSTCENTER from GL_LINE_ITEM_CERPS_L where COMP_CODE = 'GB09' and COSTCENTER is not null and ROWNUM <50", opencon);
 
             OracleDataAdapter da = new OracleDataAdapter();
             da.SelectCommand = cmd;
@@ -128,7 +128,7 @@ namespace StudyService.Controllers
 
         private OracleConnection connectDBOnprem()
         {
-            string conStringOr = @"Data Source=us1sdoel004.corpnet2.com:1521/USTST008;User Id=CERPS_FDR_STAGE;Password=C3rpsFdrT$t;Connection Timeout=30";
+            string conStringOr = @"Data Source=us1sdoel004.corpnet2.com:1521/USTST008.world;User Id=CERPS_FDR_STAGE;Password=C3rpsFdrT$t;Connection Timeout=30";
 
             OracleConnection conn = new OracleConnection();
             conn.ConnectionString = conStringOr;
