@@ -17,7 +17,7 @@ namespace StudyService.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
+        // GET api/values in API
         [HttpGet]
         public string Get()
         {
