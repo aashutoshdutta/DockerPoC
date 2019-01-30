@@ -24,14 +24,14 @@ namespace StudyService.Controllers
             //return new string[] { "value1", "value2" };
 
             //added Azure DB connection
-            SqlConnection opencon =  connectDB();
+           // SqlConnection opencon =  connectDB();
 
             
 
-            //OracleConnection opencon = connectDBOnprem();
+            OracleConnection opencon = connectDBOnprem();
 
 
-            string res = getStudydata(opencon);
+            string res = getFDRdata(opencon);
 
             return res;
 
