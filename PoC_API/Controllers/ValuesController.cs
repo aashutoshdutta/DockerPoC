@@ -23,11 +23,11 @@ namespace StudyService.Controllers
         {
             //return new string[] { "value1", "value2" };
 
-            // SqlConnection opencon =  connectDB();
+             SqlConnection opencon =  connectDB();
 
-            OracleConnection opencon = connectDBOnprem();
+            //OracleConnection opencon = connectDBOnprem();
 
-            string res = getFDRdata(opencon);
+            string res = getStudydata(opencon);
 
             return res;
 
